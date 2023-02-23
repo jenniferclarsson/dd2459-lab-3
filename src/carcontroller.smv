@@ -36,14 +36,43 @@ ASSIGN
 	esac;
 
 -- 1 trap property for node coverage (which node?)
+-- NC Trap property 1
 LTLSPEC 
 	G( !(state = stop))
 
 -- Question 1. Write down the remaining 2 NC trap properties yourself
 
+-- NC Trap property 2
+LTLSPEC 
+	G( !(state = slow))
+
+-- NC Trap property 3
+LTLSPEC 
+	G( !(state = fast))
+
 -- 1 trap property for edge coverage (which edge?)
+-- EC Trap property 1
 LTLSPEC 
 	G( state=stop & accelerate -> X( !(state=slow) ) )
 
 -- Question 2. Write down the remaining 5 EC trap properties yourself
 
+-- EC Trap property 2
+LTLSPEC 
+	G( state=slow & !brake -> X( !(state=stop) ) )
+
+-- EC Trap property 3
+LTLSPEC 
+	G( state=slow & brake -> X( !(state=stop) ) )
+
+-- EC Trap property 4
+LTLSPEC 
+	G( state=slow & accelerate -> X( !(state=fast) ) )
+
+-- EC Trap property 5
+LTLSPEC 
+	G( state=fast -> X( !(state=slow) ) )
+
+-- EC Trap property 6
+LTLSPEC 
+	G( state=fast -> X( !(state=stop) ) )
